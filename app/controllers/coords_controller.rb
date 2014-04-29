@@ -8,12 +8,12 @@ class CoordsController < ApplicationController
     your_api_key = ""
 
     # Your code goes here.
-    # url = ?
-    # raw_data = ?
-    # parsed_data = ?
-    # @temperature = ?
-    # @minutely_summary = ?
-    # @hourly_summary = ?
-    # @daily_summary = ?
+    url = "http://maps.googleapis.com/maps/api/geocode/json?address=the+corner+of+foster+and+sheridan&sensor=false"
+    raw_data = open(url).read
+    parsed_data = JSON.parse(raw_data)
+    @temperature = parsed_data["currently"]["temperature"]
+    @minutely_summary = parsed_data["minutely"]["summary"]
+    @hourly_summary = parsed_data["hourly"]["summary"]
+    @daily_summary = parsed_data["daily"]["summary"]
   end
 end
