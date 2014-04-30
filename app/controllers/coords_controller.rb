@@ -3,12 +3,12 @@ require 'json'
 
 class CoordsController < ApplicationController
   def fetch_weather
-    @latitude = 42.0538387
-    @longitude = -87.67721
-    your_api_key = ""
+    @latitude = 37.8267
+    @longitude = -122.423
+    your_api_key = "814bdab2953220a1d81f8f79702dd5bd"
 
     # Your code goes here.
-    url = "http://maps.googleapis.com/maps/api/geocode/json?address=the+corner+of+foster+and+sheridan&sensor=false"
+    url = "https://api.forecast.io/forecast/" + your_api_key + "/" + @latitude.to_s + "," + @longitude.to_s
     raw_data = open(url).read
     parsed_data = JSON.parse(raw_data)
     @temperature = parsed_data["currently"]["temperature"]
